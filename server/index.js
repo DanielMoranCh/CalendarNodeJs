@@ -1,6 +1,6 @@
 const http = require('http'),
       path = require('path'),
-      Routing = require('./Rutas.js')
+      Routing = require('./rutas.js')
       express = require('express'),
       bodyParser = require('body-parser'),
       mongoose = require('mongoose');
