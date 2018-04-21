@@ -1,6 +1,6 @@
 class EventManager {
     constructor() {
-        this.urlBase = "/events"
+        this.urlBase = "/Agenda"
         this.obtenerDataInicial()
         this.inicializarFormulario()
         this.guardarEvento()
