@@ -1,7 +1,7 @@
 const Router = require('express').Router();
 
 Router.get('all', function(req, res){
-  Users.find({}).exec(function(err, docs){
+  Agenda.find({}).exec(function(err, docs){
     if(err){
       res.status(500)
       res-json(err)
@@ -16,7 +16,7 @@ Router.get('/:id', function(req, res){
 
 Router.post('/new', function(req, res){
   if(req.body.allDay == false){
-  let user = new Users({
+  let agenda = new Agenda({
     Id:Math.floor(Math.random()*50),
     userId:session.usuarioid,
     titulo: req.body.titulo,
@@ -27,7 +27,7 @@ Router.post('/new', function(req, res){
     allDay: req.body.allDay,
   })
 }else{
-let user = new Users({
+let agenda = new Agenda({
   Id:Math.floor(Math.random()*50),
   userId: session.usuarioid,
   titulo: req.body.titulo,
@@ -48,12 +48,20 @@ let user = new Users({
 })
 
 Router.get('/delete/:id', function(req, res){
-  User.findOne({id: id, function(err, agenda){
+  User.findOne({id: req.params.id, function(err, agenda){
       if(err) {
          response = err;
           console.log(err);
       }
       else if(agenda){
+        Agenda.remove({id: req.params.id}, function(error){
+              if(error){
+                 res.send('Error al intentar eliminar registro.');
+              }else{
+                 res.redirect('/main');
+              }
+           });
+
           response = "Validado";
       }
       else {

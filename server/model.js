@@ -11,5 +11,5 @@ const mongoose = require('mongoose')
     end_hour:{ type: Timestamp, require: false },
 	  allDay:{ type: Boolean, require: false }
 	})
-	lef UserModel = mongoose.model('Agenda', AgendaSchema)
-	module.exports = UserSchema
+	let AgendaModel = mongoose.model('Agenda', AgendaSchema)
+	module.exports = AgendaModel
